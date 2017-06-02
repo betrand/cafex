@@ -1,6 +1,6 @@
 package com.capgemini.cafex.control;
 
-import java.util.Arrays;
+import com.capgemini.cafex.model.service.Billing;
 
 /**
  *
@@ -9,7 +9,6 @@ import java.util.Arrays;
 public class Main {
 
  public static void main(String[] args) {
-  System.out.println(Arrays.toString(args));
+  System.out.println(Billing.getBill(args));
  }
-
 }
