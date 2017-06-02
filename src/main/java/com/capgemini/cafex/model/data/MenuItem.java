@@ -6,20 +6,23 @@ package com.capgemini.cafex.model.data;
  */
 public enum MenuItem {
 
- COLA("Cola", 0, 50, false),
- COFFEE("Coffee", 1, 0, true),
- CHEESE_SANDWICH("Cheese Sandwich", 2, 0, false);
+ COLA("Cola", 0, 50, false, false),
+ COFFEE("Coffee", 1, 0, true, false),
+ CHEESE_SANDWICH("Cheese Sandwich", 2, 0, false, true),
+ STEAK_SANDWICH("Steak Sandwich", 4, 50, true, true);
 
  private final String item;
  private final int pound;
  private final int pence;
  private final boolean isHot;
+ private final boolean isFood;
 
- MenuItem(String item, int pound, int pence, boolean isHot) {
+ MenuItem(String item, int pound, int pence, boolean isHot, boolean isFood) {
   this.item = item;
   this.pound = pound;
   this.pence = pence;
   this.isHot = isHot;
+  this.isFood = isFood;
  }
 
  public String getItem() {
@@ -36,6 +39,10 @@ public enum MenuItem {
 
  public boolean isHot() {
   return isHot;
+ }
+
+ public boolean isFood() {
+  return isFood;
  }
 
  @Override
