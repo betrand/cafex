@@ -1,5 +1,6 @@
 package com.capgemini.cafex.model.service;
 
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 /**
@@ -9,11 +10,15 @@ import org.junit.Test;
 public class BillingTest {
 
  /**
-  * Test of getBill method, of class Billing.
+  * Testing that an empty String list returns Zero
+  *
   */
  @Test
- public void testGetBill() {
-
+ public void testGetBillEmptyList(){
+  String[] purchaseItems = new String[0];
+  String expResult = "0p";
+  String result = Billing.getBill(purchaseItems);
+  assertEquals(expResult, result);
  }
 
 }
