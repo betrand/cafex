@@ -45,7 +45,7 @@ public class Amount {
   return amt;
  }
 
- public Amount getFoodServiceCharge() {
+ public Amount addFoodServiceCharge() {
   BigDecimal total = new BigDecimal(amount());
   total = total.add(total.multiply(new BigDecimal(FOOD_SERVICE_CHARGE))
           .setScale(2, RoundingMode.HALF_EVEN));
@@ -53,7 +53,7 @@ public class Amount {
   return this;
  }
 
- public Amount getHotFoodServiceCharge() {
+ public Amount addHotFoodServiceCharge() {
   BigDecimal total = new BigDecimal(amount());
   BigDecimal totalServiceCharge = total.add(total.multiply(new BigDecimal(HOT_FOOD_SERVICE_CHARGE))
           .setScale(2, RoundingMode.HALF_EVEN));

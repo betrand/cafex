@@ -10,7 +10,7 @@ import org.junit.Test;
 public class BillingTest {
 
  /**
-  * Testing that an empty String list returns Zero
+  * Test that an empty String list returns 0p
   *
   */
  @Test
@@ -22,24 +22,23 @@ public class BillingTest {
  }
 
  /**
-  * Testing that a String list containing an Unknown Item returns Invalid Item
+  * Test that a String list containing an Unknown Item returns 0p
   *
   */
  @Test
  public void testGetStandardBillForUnknownItem() {
   String[] purchaseItems = {"Red Bull"};
-  String expResult = "Invalid Item";
+  String expResult = "0p";
   String result = Billing.getBill(purchaseItems);
   assertEquals(expResult, result);
  }
 
  /**
-  * Test that passing multiple Items to the getBill Method calculates and
-  * returns correct Total Bill £1.50.
+  * Test that a list of only drink returns correct Bill with no Service Charge.
   *
   */
  @Test
- public void testGetStandardBill_() {
+ public void testGetStandardBill() {
   String[] purchaseItems = {"Cola", "Coffee"};
   String expResult = "£1.50";
   String result = Billing.getBill(purchaseItems);
@@ -47,15 +46,43 @@ public class BillingTest {
  }
 
  /**
-  * Test that passing more Items to the getBill Method calculates and returns
-  * correct Total Bill £3.50.
+  * Test that a list of drink & Cold Food Items returns correct Bill with 10%
+  * Service Charge.
   *
   */
  @Test
- public void testGetStandardBill() {
+ public void testGetBillForDrinksAndColdFood() {
   String[] purchaseItems = {"Cola", "Coffee", "Cheese Sandwich"};
-  String expResult = "£3.50";
+  String expResult = "£3.85";
   String result = Billing.getBill(purchaseItems);
   assertEquals(expResult, result);
  }
+
+ /**
+  * Test that a list of drink, cold & hot Food Items returns correct Bill with
+  * 20% Service Charge.
+  *
+  */
+ @Test
+ public void testGetBillForDrinksColdAndHotFood() {
+  String[] purchaseItems = {"Cola", "Coffee", "Cheese Sandwich", "Steak Sandwich"};
+  String expResult = "£9.60";
+  String result = Billing.getBill(purchaseItems);
+  assertEquals(expResult, result);
+ }
+
+ /**
+  * Test that a list of drink, cold & hot Food Items returns correct Bill with
+  * 20% Service Charge however applies only a maximum of £20 service charge when
+  * items contain hot food.
+  *
+  */
+ @Test
+ public void testGetBillForDrinksColdAndHotFoodMax() {
+  String[] purchaseItems = {"Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich", "Steak Sandwich"};
+  String expResult = "£146.0";
+  String result = Billing.getBill(purchaseItems);
+  assertEquals(expResult, result);
+ }
+
 }
