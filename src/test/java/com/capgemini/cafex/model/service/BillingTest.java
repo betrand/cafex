@@ -33,4 +33,16 @@ public class BillingTest {
   assertEquals(expResult, result);
  }
 
+ /**
+  * Test that passing multiple Items to the getBill Method
+  * calculates and returns correct Total Bill £1.50.
+  *
+  */
+ @Test
+ public void testGetStandardBill() {
+  String[] purchaseItems = {"Cola", "Coffee"};
+  String expResult = "£1.50";
+  String result = Billing.getBill(purchaseItems);
+  assertEquals(expResult, result);
+ }
 }
