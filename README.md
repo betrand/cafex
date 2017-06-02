@@ -27,7 +27,7 @@ and build it using the command: mvn clean install
 
 Running the Program
 --------------------
-java -jar cafex.jar ["Cola" "Coffee" "Cheese Sandwich"]
+java -jar cafex.jar "Cola" "Coffee" "Cheese Sandwich"
 
 
 Contact
